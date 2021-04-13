@@ -1,29 +1,18 @@
-# pexeso
+# Pexeso s pripojením na databázu
 
-## Project setup
+## Na tejto branchi je pexeso s pripojením na databázu pomocou mini php frameworku Medoo
+
+Pexeso pre svoj chod **potrebuje** pre svoj správny chod mať nainštalovaný nejaký lokálny server **(WAMP, XAMPP, MAMP)**
+
+### Prvý krok, inštalácia
 ```
 npm install
+```
+```
+composer update
 ```
 
 ### Compiles and hot-reloads for development
 ```
 npm run serve
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
