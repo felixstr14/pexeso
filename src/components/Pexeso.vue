@@ -56,6 +56,9 @@
             <div class="col">
               <button class="btn btn-sm btn-info" onclick="location.reload(); return false;">Nastavenia hry</button>
             </div>
+            <div class="col">
+              <button class="btn btn-sm btn-warrning" @click="saveGameOnline">Nastavenia hry</button>
+            </div>
           </div>
         </div>
       </div>
@@ -75,6 +78,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: 'Pexeso',
   props: {
@@ -171,6 +176,27 @@ export default {
             this.timer.hours += 1;
           }
         }, 1000)
+    },
+
+    saveGameOnline() {
+      var dateTime = this.getTimeForSavingGame();
+      var savedGameArr = this.prepareDataForSave();
+      savedGameArr.push({
+        player1Name: this.players[0].name,
+        player2Name: this.players[1] ? this.players[1].name : '',
+        timeOfSaving: dateTime
+      });
+      // var stringified = JSON.stringify(savedGameArr)
+
+      var data = new FormData();
+
+      data.append('savedGameArr', JSON.stringify(savedGameArr));
+
+      axios
+          .post('http://localhost/pexeso/public/save.php', data)
+          .then(response => {
+            console.log(response);
+          });
     },
     saveGame() {
       var dateTime = this.getTimeForSavingGame();

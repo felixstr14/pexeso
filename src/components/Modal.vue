@@ -40,6 +40,7 @@
           </div>
         </div>
         <div class="col border-left-custom">
+          <div>
           <h3>
             Uložené hry
           </h3>
@@ -60,6 +61,29 @@
             <p v-else>
               Nie sú žiadne uložené hry
             </p>
+          </div>
+          <div>
+            <h3>
+              Uložená hra z DB
+            </h3>
+            <table style="width: 100%" v-if="savedGameOnline">
+              <tr>
+                <th>Hráč 1</th>
+                <th>Hráč 2</th>
+                <th>Čas uloženia</th>
+                <th></th>
+              </tr>
+              <tr>
+                <td>{{savedGameOnline.player1Name}}</td>
+                <td>{{ savedGameOnline.player2Name ? savedGameOnline.player2Name :'Hráč 1 hral sám' }}</td>
+                <td>{{savedGameOnline.timeOfSaving}}</td>
+                <td><button class="btn btn-sm btn-success" @click="loadGameOnline">Načítať</button></td>
+              </tr>
+            </table>
+            <p v-else>
+              Nie sú žiadne uložené hry
+            </p>
+          </div>
         </div>
       </div>
       <div class="modal-bottom">
@@ -73,7 +97,7 @@
 
 
 <script>
-
+import axios from "axios";
 let playerId = 1
 class Player {
   constructor(name, score = 0, moves = 1, onTurn = 0, strike = 0, id = playerId) {
@@ -193,6 +217,7 @@ export default {
       showModal: true,
       playersArr: [],
       cardsArr: [],
+      savedGameDataOnline: {}
     }
   },
   methods: {
@@ -229,6 +254,11 @@ export default {
       this.$emit('start', this.savedGameData[1], this.savedGameData[0])
       this.closeModal()
       alert('Vitajte späť v hre!')
+    },
+    loadGameOnline() {
+      this.$emit('start', this.savedGameDataOnline[1], this.savedGameDataOnline[0])
+      this.closeModal()
+      alert('Vitajte späť v hre!')
     }
   },
   computed: {
@@ -243,8 +273,15 @@ export default {
       if (localStorage.savedGame) {
         return JSON.parse(localStorage.savedGame)
       } else return false;
+    },
+    savedGameOnline() {
+      return this.savedGameDataOnline[2]
     }
-  }
+  },
+  created() {
+      axios.get('http://localhost/pexeso/public/get.php')
+          .then(response => (this.savedGameDataOnline = response.data)).catch(e => console.log(e))
+  },
 }
 </script>
 
