@@ -57,7 +57,7 @@
               <button class="btn btn-sm btn-info" onclick="location.reload(); return false;">Nastavenia hry</button>
             </div>
             <div class="col">
-              <button class="btn btn-sm btn-warrning" @click="saveGameOnline">Nastavenia hry</button>
+              <button class="btn btn-sm btn-warning" @click="saveGameOnline">Uložiť hru do DB</button>
             </div>
           </div>
         </div>

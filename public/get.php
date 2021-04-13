@@ -19,9 +19,10 @@ $database = new Medoo([
 // Enjoy
 $data = $database->get('ulozene_hry', 'data', ['ORDER' => ['id' => 'DESC']]);
 
-
-$data = json_decode($data);
-echo $data->savedGameArr;
+if ($data) {
+	$data = json_decode($data);
+	echo $data->savedGameArr;
+}
 
 exit();
 

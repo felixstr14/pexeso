@@ -275,7 +275,9 @@ export default {
       } else return false;
     },
     savedGameOnline() {
-      return this.savedGameDataOnline[2]
+      if (this.savedGameDataOnline) {
+        return this.savedGameDataOnline[2]
+      } else return false;
     }
   },
   created() {
