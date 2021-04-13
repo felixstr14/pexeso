@@ -1,29 +1,16 @@
-# pexeso
+# Pexeso bez pripojenia na DB
 
-## Project setup
+
+Táto brancha je pexeso bez pripojenia na DB, bezi len na npm
+
+## Postup inštalácie:
+
+### Prvý krok, inštalácia
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Druhý krok, spustenie
 ```
 npm run serve
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
