@@ -67,6 +67,13 @@
           Hrať!
         </button>
       </div>
+      <footer>
+        <div class="text-center p-2">
+          Táto aplikácia vznikla ako súčasť bakalárskej práce <br>
+          Autor: <strong>Felix Strelecký</strong> <br>
+          Akademický rok: 2020/2021
+        </div>
+      </footer>
     </div>
   </div>
 </template>
